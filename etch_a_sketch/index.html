@@ -5,16 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Js projects: Etch-a-Sketch</title>
 </head>
+<style>
+    :root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+    }
+
+    #container {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    }
+
+    .grid-item {
+    padding: 1em;
+    border: 1px solid #ddd;
+    text-align: center;
+    }
+</style>
 <body>
     <h1>Etch-a-Sketch!</h1>
-    <p>
+    <button onclick="makeDiv()" >CLear Grid</button>
+    <div id="container">
+
+    </div>
         press f5 to play again...
     </p>
 
 
    <h3> Other Tasks</h3>
     <ol>
-        <li><a href="../rock_paper_scissors/index.html"> Rock Paper Scissors</a></li>
+        <li><a href="../rock_paper_scissors/index.html"> Rock Paper Scissors</a>please open your console( press f12 )</li>
     </ol>
 </body>
 </html>
+<script>
+
+    const container = document.getElementById("container");
+
+    function makeRows(rows, cols) {
+        container.style.setProperty('--grid-rows', rows);
+        container.style.setProperty('--grid-cols', cols);
+        for (c = 0; c < (rows * cols); c++) {
+            let cell = document.createElement("div");
+            cell.innerText = (c + 1);
+            container.appendChild(cell).className = "grid-item";
+        };
+    };
+
+    makeRows(16, 16);
+
+    function makeDiv(rows, cols){
+        container.innerHTML = " "
+        if(container.innerHTML == " "){
+            let rowNum = Number(prompt("Enter number of grid rows"));
+            let colNum = Number(prompt("Enter number of grid columns"));
+        }
+
+       
+   
+        makeRows(rowNum, colNum);
+    };
+
+
+
+</script>
